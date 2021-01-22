@@ -17,9 +17,9 @@ LIBRARY_PATH="${PREFIX}/lib"
 # Always build PIC code for enable static linking into other shared libraries
 CXXFLAGS="${CXXFLAGS} -fPIC"
 
-if [ "$(uname)" == "Darwin" ]; then
+if [[ "${target_platform}" == osx* ]]; then
     TOOLSET=clang
-elif [ "$(uname)" == "Linux" ]; then
+elif [[ "${target_platform}" == linux* ]]; then
     TOOLSET=gcc
 fi
 
@@ -44,7 +44,7 @@ sed -i.bak "s,cc,${TOOLSET},g" ${SRC_DIR}/project-config.jam
 
 ADDRESS_MODEL="${ARCH}"
 ARCHITECTURE=x86
-if [ "${ADDRESS_MODEL}" == "aarch64" ]; then
+if [ "${ADDRESS_MODEL}" == "aarch64" ] || [ "${ADDRESS_MODEL}" == "arm64" ]; then
     ADDRESS_MODEL=64
     ARCHITECTURE=arm
 elif [ "${ADDRESS_MODEL}" == "ppc64le" ]; then
