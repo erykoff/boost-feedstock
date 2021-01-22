@@ -1,0 +1,11 @@
+--- tools/build/src/tools/darwin.jam.orig	2021-01-22 10:19:49.000000000 -0800
++++ tools/build/src/tools/darwin.jam	2021-01-22 10:20:31.000000000 -0800
+@@ -501,6 +501,8 @@
+         {
+             if $(instruction-set) {
+                 options = -arch$(_)$(instruction-set) ;
++            } else if $(address-model) = 64 {
++                options = -arch arm64 ;
+             } else {
+                 options = -arch arm ;
+             }

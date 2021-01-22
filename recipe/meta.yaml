@@ -9,6 +9,8 @@ source:
   fn:  {{ filename }}
   url: https://dl.bintray.com/boostorg/release/{{ version }}/source/{{ filename }}
   sha256: 430ae8354789de4fd19ee52f3b1f739e1fba576f0aded0897c3c2bc00fb38778
+  patches:
+    - 456be0b7ecca065fbccf380c2f51e0985e608ba0_1_70.patch
 
 build:
   number: 100
